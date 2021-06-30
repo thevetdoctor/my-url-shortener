@@ -1,0 +1,85 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  align-items: center; }
+  @media screen and (min-width: 1024px) {
+    header {
+      padding: 2rem; } }
+  @media screen and (min-width: 1200px) {
+    header {
+      padding: 1.5rem 4.5rem; } }
+
+@media screen and (min-width: 768px) {
+  #header-left {
+    display: flex;
+    align-items: center; } }
+#header-left #logo {
+  display: flex; }
+#header-left nav {
+  display: none; }
+  @media screen and (min-width: 1024px) {
+    #header-left nav {
+      display: block;
+      margin-left: 1rem; }
+      #header-left nav ul {
+        display: flex; }
+        #header-left nav ul li {
+          margin-left: 1.8rem; }
+          #header-left nav ul li a {
+            font-weight: 700;
+            color: #9e9aa7; } }
+
+#header-right {
+  display: none; }
+  @media screen and (min-width: 1024px) {
+    #header-right {
+      display: block; } }
+  #header-right button {
+    font-weight: 700; }
+    #header-right button#login-btn {
+      border: none;
+      background-color: transparent;
+      color: #9e9aa7; }
+    #header-right button#signup-btn {
+      margin-left: 2rem;
+      font-size: 1rem;
+      padding: .75rem 1.75rem; }
+
+#menu-icon {
+  display: flex;
+  flex-direction: column;
+  width: 30px; }
+  @media screen and (min-width: 1024px) {
+    #menu-icon {
+      display: none; } }
+  #menu-icon span {
+    background-color: #bfbfbf;
+    height: 3px;
+    display: block;
+    margin-bottom: 5px; }
+
+#hamburger-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-radius: 25px;
+  background-color: #232127;
+  z-index: 10;
+  transition: transform 0.3s ease-in-out; }
+  @media screen and (min-width: 1200px) {
+    #hamburger-menu {
+      display: none; } }
+  #hamburger-menu nav ul li {
+    text-align: center; }
+    #hamburger-menu nav ul li a {
+      color: white;
+      font-weight: 700; }
+
+.showNav {
+  transform: translateY(0%) !important; }
+
+.hideNav {
+  transform: translateY(-250%); }
+
+/*# sourceMappingURL=Nav.css.map */
