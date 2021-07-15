@@ -1,0 +1,65 @@
+@import "General.scss";
+
+.result{
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  border-radius: .75rem;
+  padding: 1.5rem 1rem;
+  width: 80%;
+  margin: 0 auto 1rem auto;
+
+  @media screen and (min-width: 1024px){
+    width: 85%;
+  }
+  @media screen and (min-width: 1280px){
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+  }
+
+
+  & .fullLink{
+    font-size: 1.25rem;
+    padding: 1rem;
+
+    @media screen and (min-width: 768px){
+      font-size: 1.5rem;
+    }
+    @media screen and (min-width: 1280px){
+      font-size: 1.375rem;
+      align-self: center;
+    }
+  }
+  & .shortenedDetails{
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid $grayish-violet;
+
+    & .shortenedLink{
+      font-size: 1.25rem;
+      color: hsl(180, 66%, 49%);
+      padding: 1rem;
+
+      @media screen and (min-width: 768px){
+        font-size: 1.5rem;
+      }
+      @media screen and (min-width: 1280px){
+        font-size: 1.375rem;
+        align-self: center;
+        margin-right: 1rem;
+        padding: 0;
+      }
+    }
+
+    a.btn{
+      border-radius: .5rem;
+      padding: 1rem 3rem;
+      text-align: center;
+    }
+    @media screen and (min-width: 1280px){
+      flex-direction: row;
+      border: none;
+    }
+  }
+}
