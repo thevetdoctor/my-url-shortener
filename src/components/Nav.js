@@ -36,7 +36,7 @@ const Nav = ({showNav, togggleMenu}) => {
                         <li><a href="#">Pricing</a></li>
                         <li><a href="#">Resources</a></li>
                         <li><a href="#">Login</a></li>
-                        <li><a href="#" class="btn">Sign Up</a></li>
+                        <li><a href="#" className="btn">Sign Up</a></li>
                     </ul>
                 </nav>
             </div>
