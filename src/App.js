@@ -27,11 +27,14 @@ export default class App extends Component {
     this.togggleMenu = this.togggleMenu.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleInputFieldChange = this.handleInputFieldChange.bind(this);
+    this.validateField = this.validateField.bind(this);
+    this.validateForm = this.validateForm.bind(this);
   }
 
   togggleMenu = () => {
     this.state.showNav ? this.setState({showNav: false}) : this.setState({showNav: true});
   }
+
 
   handleInputFieldChange = (event) => {
     const value = event.target.value
@@ -43,7 +46,7 @@ export default class App extends Component {
   validateField = (fieldValue) => {
     const urlRegEx = /((http|https|ftp):\/\/)?[\w-]+(\.[\w-]+)+([\w.,@?^=%;:#-~+&amp/]*[\w@?^=%&amp;/~+#-])?/g;
 
-    if(!fieldValue || fieldValue === " "){
+    if(!fieldValue){
       this.setState({
         errorMessage: "Field cannot be blank. Please enter a URL.",
         formFieldValid: false
@@ -67,18 +70,22 @@ export default class App extends Component {
     this.setState({
       formValid: this.state.formFieldValid
     })
+    return this.state.formValid;
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    getShortenedURL(this.state.inputValue).then(response => {
-      this.setState(prevState => ({
-        shortenedURLs: [...prevState.shortenedURLs, response.data.result]
-      }))
-      localStorage.setItem('pastQueries', JSON.stringify(this.state.shortenedURLs));
-      console.log(response.data);
-    })
-    .catch(err => console.log(err))
+    if(this.validateForm()){
+      getShortenedURL(this.state.inputValue).then(response => {
+        this.setState(prevState => ({
+          shortenedURLs: [...prevState.shortenedURLs, response.data.result]
+        }))
+        localStorage.setItem('pastQueries', JSON.stringify(this.state.shortenedURLs));
+        console.log(response.data);
+      })
+      .catch(err => console.log(err))
+    }
+    
   }
 
   componentDidMount(){
