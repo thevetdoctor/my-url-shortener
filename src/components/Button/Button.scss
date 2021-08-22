@@ -1,0 +1,25 @@
+@import "../../General.scss";
+
+.btn {
+  padding: 1rem 2rem;
+  background-color: $cyan;
+  color: $white;
+  border-radius: 9999rem;
+  border: none;
+  font-weight: $bold;
+  font-size: 1.25rem;
+  cursor: pointer;
+
+  @media screen and (min-width: 640px) {
+    font-size: 1.375rem;
+    padding: 1.25rem 3rem;
+  }
+
+  &:hover {
+    background-color: $light-cyan;
+  }
+
+  &:active:hover {
+    background-color: $dark-cyan;
+  }
+}
