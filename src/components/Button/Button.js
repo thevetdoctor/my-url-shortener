@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 import "./Button.scss";
 
-const Button = ({ value }) => {
+const Button = ({ value, handleClick }) => {
   return (
-    <button data-testid="button" className="btn">
+    <button data-testid="button" className="btn" onClick={handleClick}>
       {value}
     </button>
   );
@@ -13,4 +13,5 @@ const Button = ({ value }) => {
 export default Button;
 Button.propTypes = {
   value: PropTypes.string,
+  handleClick: PropTypes.func,
 };
