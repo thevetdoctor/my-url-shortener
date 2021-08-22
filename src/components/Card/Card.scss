@@ -1,0 +1,36 @@
+@import "../../General.scss";
+
+.card {
+  background-color: $white;
+  padding: 1.75rem;
+  height: 100%;
+  align-self: auto;
+  z-index: 5;
+  text-align: center;
+
+  @media screen and (min-width: 1024px) {
+    height: max-content;
+  }
+  @media screen and (min-width: 1200px) {
+    text-align: left;
+
+    &:nth-of-type(1) {
+      align-self: flex-start;
+    }
+    &:nth-of-type(2) {
+      align-self: center;
+    }
+    &:last-of-type {
+      align-self: flex-end;
+    }
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    position: relative;
+    top: -20px;
+  }
+  p {
+    color: $grayish-violet;
+  }
+}
