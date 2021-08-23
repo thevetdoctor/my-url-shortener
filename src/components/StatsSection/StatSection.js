@@ -11,24 +11,24 @@ const StatSection = () => {
   const introSubtitle =
     "Track how your links are performing across the web with our advanced statistics dashboard";
 
-  const [inputValue, setInputValue] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [formFieldValid, setFormFieldValid] = useState(true);
-  const [formValid, setFormValid] = useState(true);
-  const [shortenedURLs, setShortenedURLs] = useState([]);
+  const [inputValueState, setInputValue] = useState("");
+  const [errorMessageState, setErrorMessage] = useState("");
+  const [formFieldValidState, setFormFieldValid] = useState(true);
+  const [formValidState, setFormValid] = useState(true);
+  const [shortenedURLState, setShortenedURLs] = useState([]);
 
-  const { inputValueField } = inputValue;
-  const { errorMsg } = errorMessage;
-  const { formValidation } = formValid;
-  const { formFieldValidation } = formFieldValid;
-  const { shortURLs } = shortenedURLs;
+  const { inputValueField } = inputValueState;
+  const { errorMsg } = errorMessageState;
+  const { formValidation } = formValidState;
+  const { formFieldValidation } = formFieldValidState;
+  const { shortURLs } = shortenedURLState;
 
   useEffect(() => {
     try {
       const stateQueries = JSON.parse(localStorage.getItem("pastQueries"));
       if (stateQueries) {
         setShortenedURLs({
-          shortenedURLs: stateQueries,
+          shortenedURLState: stateQueries,
         });
       }
     } catch (e) {
@@ -40,7 +40,7 @@ const StatSection = () => {
     const value = event.target.value;
     setInputValue(
       {
-        inputValue: event.target.value,
+        inputValueState: event.target.value,
       },
       () => {
         validateField(value);
@@ -54,31 +54,31 @@ const StatSection = () => {
 
     if (!fieldValue) {
       setErrorMessage({
-        errorMessage: "Field cannot be blank. Please enter a URL.",
+        errorMessageState: "Field cannot be blank. Please enter a URL.",
       });
       setFormFieldValid({
-        formFieldValid: false,
+        formFieldValidState: false,
       });
     } else if (!urlRegEx.test(fieldValue)) {
       setErrorMessage({
-        errorMessage: "Please enter a valid URL",
+        errorMessageState: "Please enter a valid URL",
       });
       setFormFieldValid({
-        formFieldValid: false,
+        formFieldValidState: false,
       });
     } else {
       setErrorMessage({
-        errorMessage: "",
+        errorMessageState: "",
       });
       setFormFieldValid({
-        formFieldValid: true,
+        formFieldValidState: true,
       });
     }
   };
 
   const validateForm = () => {
     setFormValid({
-      formValid: formFieldValidation,
+      formValidState: formFieldValidation,
     });
     return formValidation;
   };
@@ -89,7 +89,10 @@ const StatSection = () => {
       getShortenedURL(inputValueField)
         .then((response) => {
           setShortenedURLs((prevState) => ({
-            shortenedURLs: [...prevState.shortenedURLs, response.data.result],
+            shortenedURLState: [
+              ...prevState.shortenedURLState,
+              response.data.result,
+            ],
           }));
           localStorage.setItem("pastQueries", JSON.stringify(shortURLs));
           console.log(response.data);
@@ -104,8 +107,8 @@ const StatSection = () => {
         value={inputValueField}
         onSubmit={handleFormSubmit}
         onChange={handleInputFieldChange}
-        errorMessage={errorMsg}
-        formFieldValid={formFieldValidation}
+        errorMessageState={errorMsg}
+        formFieldValidState={formFieldValidation}
       />
       <ResultList results={shortURLs} />
       <StatsIntroText
