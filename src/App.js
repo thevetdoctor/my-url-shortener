@@ -5,7 +5,7 @@ import HeroSection from "./components/HeroSection/HeroSection";
 import StatSection from "./components/StatsSection/StatSection";
 import BoostSection from "./components/BoostSection/BoostSection";
 import Footer from "./components/Footer/Footer";
-import "./styles/App.scss";
+import "./App.scss";
 
 const App = () => {
   return (
