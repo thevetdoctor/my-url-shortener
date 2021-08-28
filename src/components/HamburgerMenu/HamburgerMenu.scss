@@ -1,0 +1,49 @@
+@import "../../General.scss";
+
+#hamburger-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-radius: 15px;
+  background-color: $v-dark-violet;
+  z-index: 10;
+  transition: transform 0.3s ease-in-out;
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+
+  nav {
+    ul {
+      padding: 2rem;
+      li {
+        text-align: center;
+        padding: 1.25rem;
+
+        &:nth-of-type(3) {
+          padding-bottom: 2.5rem;
+        }
+        &:nth-of-type(4) {
+          border-top: 1px solid $grayish-violet;
+          padding-top: 2.5rem;
+        }
+
+        a {
+          color: $white;
+          font-weight: $bold;
+          font-size: 1.25rem;
+
+          &.btn {
+            display: inline-block;
+            padding: 1rem;
+            width: 90%;
+          }
+
+          @media screen and (min-width: 768px) {
+            font-size: 1.75rem;
+          }
+        }
+      }
+    }
+  }
+}
