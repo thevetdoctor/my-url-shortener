@@ -14,4 +14,5 @@ export default Button;
 Button.propTypes = {
   value: PropTypes.string,
   handleClick: PropTypes.func,
+  type: PropTypes.string,
 };
