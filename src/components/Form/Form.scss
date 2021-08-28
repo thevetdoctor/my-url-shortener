@@ -1,8 +1,8 @@
-@import "General.scss";
+@import "../../General.scss";
 
 form {
   background-color: $dark-violet;
-  background-image: url("../images/bg-shorten-mobile.svg");
+  background-image: url("../../images/bg-shorten-mobile.svg");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -16,7 +16,7 @@ form {
     padding: 2.5rem;
   }
   @media screen and (min-width: 1024px) {
-    background-image: url("../images/bg-shorten-desktop.svg");
+    background-image: url("../../images/bg-shorten-desktop.svg");
     width: 70%;
     top: -6.5rem;
   }
