@@ -1,0 +1,18 @@
+@import "../../General.scss";
+
+#menu-icon {
+  display: flex;
+  flex-direction: column;
+  width: 30px;
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+
+  span {
+    background-color: $gray;
+    height: 3px;
+    display: block;
+    margin-bottom: 5px;
+  }
+}
