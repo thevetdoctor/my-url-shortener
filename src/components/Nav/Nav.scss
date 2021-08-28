@@ -1,0 +1,92 @@
+@import "General.scss";
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  align-items: center;
+
+  @media screen and (min-width: 1024px) {
+    padding: 2rem;
+  }
+  @media screen and (min-width: 1200px) {
+    padding: 1.5rem 4.5rem;
+  }
+}
+#header-left {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+  }
+
+  #logo {
+    display: flex;
+  }
+  nav {
+    display: none;
+
+    @media screen and (min-width: 1024px) {
+      display: block;
+      margin-left: 1rem;
+
+      ul {
+        display: flex;
+
+        li {
+          margin-left: 1.8rem;
+
+          a {
+            font-weight: 700;
+            color: $grayish-violet;
+          }
+        }
+      }
+    }
+  }
+}
+#header-right {
+  display: none;
+
+  @media screen and (min-width: 1024px) {
+    display: block;
+  }
+
+  button {
+    font-weight: 700;
+
+    &#login-btn {
+      border: none;
+      background-color: transparent;
+      color: $grayish-violet;
+    }
+
+    &#signup-btn {
+      margin-left: 2rem;
+      font-size: 1rem;
+      padding: 0.75rem 1.75rem;
+    }
+  }
+}
+#menu-icon {
+  display: flex;
+  flex-direction: column;
+  width: 30px;
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+
+  span {
+    background-color: $gray;
+    height: 3px;
+    display: block;
+    margin-bottom: 5px;
+  }
+}
+
+.showNav {
+  transform: translateY(0%) !important;
+}
+.hideNav {
+  transform: translateY(-250%);
+}
