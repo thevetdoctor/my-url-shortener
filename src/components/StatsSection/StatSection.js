@@ -14,17 +14,19 @@ const StatSection = () => {
   const [inputValue, setInputValue] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [formFieldValidState, setFormFieldValid] = useState(true);
-  const [shortenedURLState, setShortenedURLs] = useState([]);
+  const resultSample = {
+    original_link: "https://stackoverflow.com/questions/9854166/declaring-an-unsigned-int-in-java",
+    full_short_link: "sd"
+  };
+  const [shortenedURLs, setShortenedURLs] = useState([resultSample]);
 
-  const { shortURLs } = shortenedURLState;
-
+  console.log(shortenedURLs);
   useEffect(() => {
     try {
       const stateQueries = JSON.parse(localStorage.getItem("pastQueries"));
+      // console.log(stateQueries);
       if (stateQueries) {
-        setShortenedURLs({
-          shortenedURLState: stateQueries,
-        });
+        setShortenedURLs(stateQueries);
       }
     } catch (e) {
       console.error(e);
@@ -61,15 +63,20 @@ const StatSection = () => {
     event.preventDefault();
     if (inputValue && validateForm()) {
       getShortenedURL(inputValue)
-        .then((response) => {
-          setShortenedURLs((prevState) => ({
-            shortenedURLState: [
-              ...prevState.shortenedURLState,
-              response.data.result,
-            ],
-          }));
-          localStorage.setItem("pastQueries", JSON.stringify(shortURLs));
-          console.log(response.data);
+        .then(async(response) => {
+          const result = {
+            original_link: response.data.result.original_link,
+            full_short_link: response.data.result.full_short_link
+          }
+          await setShortenedURLs([
+              ...shortenedURLs,
+              result,
+            ]);
+          localStorage.setItem("pastQueries", JSON.stringify([
+            ...shortenedURLs,
+            result,
+          ]));
+          console.log(response.data, result);
         })
         .catch((err) => console.log(err));
     } else {
@@ -87,7 +94,7 @@ const StatSection = () => {
         errorMessage={errorMessage}
         formFieldValid={formFieldValidState}
       />
-      <ResultList results={shortURLs} />
+      <ResultList results={shortenedURLs} />
       <StatsIntroText
         introTitle="Advanced Statistics"
         bodyText={introSubtitle}

@@ -5,10 +5,13 @@ import Result from "../Result/Result";
 import "./ResultsList.scss";
 
 const ResultList = (props) => {
+  console.log(props);
+  
   const shortenedResults = props.results;
   const listItems = shortenedResults
-    ? shortenedResults.map((item) => (
+    ? shortenedResults.map((item, idx) => (
         <Result
+          key={idx}
           fullLink={item.original_link}
           shortenedLink={item.full_short_link}
         />
@@ -22,5 +25,5 @@ const ResultList = (props) => {
 };
 export default ResultList;
 ResultList.propTypes = {
-  results: PropTypes.string,
+  results: PropTypes.array,
 };
